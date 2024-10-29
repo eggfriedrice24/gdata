@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Sidebar } from "./_components/sidebar";
+import Image from "next/image";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,7 +30,27 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <main className="relative">
+          <div className="absolute top-2 left-2">
+            <div className="relative">
+              <Image
+                alt="data-centre"
+                src="/data-centre.png"
+                height={405}
+                width={405}
+              />
+              <Image
+                alt="g-data"
+                src="/g-data.png"
+                height={180}
+                width={180}
+                className="absolute top-1/2 left-9 transform  -translate-y-1/2"
+              />
+            </div>
+          </div>
+          <Sidebar />
+          {children}
+        </main>
       </body>
     </html>
   );
